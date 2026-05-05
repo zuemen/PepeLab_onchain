@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import LandingPage from './pages/LandingPage';
 import ExchangePage from './pages/ExchangePage';
+import TraderDashboard from './pages/TraderDashboard';
 import { useWallet } from './hooks/useWallet';
 import { useContracts } from './hooks/useContracts';
 
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage address={address} connect={connectWallet} />} />
           <Route path="/exchange" element={<ExchangePage address={address} signer={signer} />} />
+          <Route path="/trader" element={<TraderDashboard address={address} signer={signer} />} />
           {/* Add more routes like /dashboard or /traders here later */}
         </Routes>
       </Layout>
