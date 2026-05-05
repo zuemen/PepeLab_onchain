@@ -3,6 +3,9 @@ import Layout from './components/Layout';
 import LandingPage from './pages/LandingPage';
 import ExchangePage from './pages/ExchangePage';
 import TraderDashboard from './pages/TraderDashboard';
+import MarketplacePage from './pages/MarketplacePage';
+import CopyPage from './pages/CopyPage';
+import PortfolioPage from './pages/PortfolioPage';
 import { useWallet } from './hooks/useWallet';
 import { useContracts } from './hooks/useContracts';
 
@@ -18,7 +21,9 @@ function App() {
           <Route path="/" element={<LandingPage address={address} connect={connectWallet} />} />
           <Route path="/exchange" element={<ExchangePage address={address} signer={signer} />} />
           <Route path="/trader" element={<TraderDashboard address={address} signer={signer} />} />
-          {/* Add more routes like /dashboard or /traders here later */}
+          <Route path="/marketplace" element={<MarketplacePage address={address} signer={signer} />} />
+          <Route path="/copy/:traderAddress" element={<CopyPage address={address} signer={signer} />} />
+          <Route path="/portfolio" element={<PortfolioPage address={address} signer={signer} />} />
         </Routes>
       </Layout>
     </Router>

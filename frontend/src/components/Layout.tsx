@@ -21,7 +21,9 @@ const Layout: React.FC<LayoutProps> = ({ children, address, connect }) => {
           <nav className="hidden md:flex space-x-8 font-medium">
             <a href="/" className="hover:text-green-400 transition">Home</a>
             <a href="/exchange" className="hover:text-green-400 transition">Exchange</a>
+            <a href="/marketplace" className="hover:text-green-400 transition">Marketplace</a>
             <a href="/trader" className="hover:text-green-400 transition">Traders</a>
+            <a href="/portfolio" className="hover:text-green-400 transition">Portfolio</a>
           </nav>
           <WalletButton address={address} connect={connect} />
         </div>
