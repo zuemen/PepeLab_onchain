@@ -102,7 +102,7 @@ contract PerpetualExchange is Ownable, ReentrancyGuard {
         uint256 leverage
     ) internal returns (uint256) {
         require(margin >= MIN_MARGIN, "Margin too low");
-        require(leverage >= 1 && leverage <= MAX_LEVERAGE, "Invalid leverage");
+        require(leverage == 1 || leverage == 2 || leverage == 5, "Invalid leverage");
         require(freeMargin[user] >= margin, "Insufficient free margin");
         
         // Oracle check
@@ -131,21 +131,9 @@ contract PerpetualExchange is Ownable, ReentrancyGuard {
     }
 
     function closePosition(uint256 positionId) external nonReentrant {
-        _closePosition(msg.sender, positionId);
-    }
-
-    function closePositionFor(address user, uint256 positionId) external onlyCopyTracker nonReentrant {
-        _closePosition(user, positionId);
-    }
-
-    function _closePosition(address caller, uint256 positionId) internal {
         Position storage pos = positions[positionId];
         require(pos.isOpen, "Position already closed");
-        // If caller is copyTracker, they can close anyone's position (authorized by CopyTracker logic)
-        // If caller is not copyTracker, they must be the owner.
-        if (msg.sender != copyTracker) {
-            require(caller == pos.owner, "Not position owner");
-        }
+        require(msg.sender == pos.owner || msg.sender == copyTracker, "Not authorized");
 
         (uint256 currentPrice, ) = oracle.getPrice(pos.asset);
         require(!oracle.isStale(pos.asset), "Price is stale");

@@ -82,7 +82,7 @@ contract CopyTracker is Ownable {
         require(record.active, "Record already inactive");
 
         for (uint256 i = 0; i < record.positionIds.length; i++) {
-            exchange.closePositionFor(msg.sender, record.positionIds[i]);
+            exchange.closePosition(record.positionIds[i]);
         }
 
         record.active = false;
