@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import LandingPage from './pages/LandingPage';
+import ExchangePage from './pages/ExchangePage';
 import { useWallet } from './hooks/useWallet';
 import { useContracts } from './hooks/useContracts';
 
@@ -14,6 +15,7 @@ function App() {
       <Layout address={address} connect={connectWallet}>
         <Routes>
           <Route path="/" element={<LandingPage address={address} connect={connectWallet} />} />
+          <Route path="/exchange" element={<ExchangePage address={address} signer={signer} />} />
           {/* Add more routes like /dashboard or /traders here later */}
         </Routes>
       </Layout>
