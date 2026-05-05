@@ -34,17 +34,23 @@ pepelab-onchain/
 └── .gitignore        # Git 忽略檔案配置
 ```
 
+## 當前進度
+- [x] 基礎環境搭建 (Monorepo, Foundry, Vite)
+- [x] Mock 測試資產與 Oracle 合約
+- [x] **PepeSynthetics 核心合約**: 實現金庫存取款與合成資產跟單邏輯
+- [x] **合約單元測試**: 通過 14 個測試案例，覆蓋獲利與虧損場景
+- [x] **前端基礎 UI**: 建立 Dashboard 與交易控制面板
+
 ## 快速開始
-### 合約開發
+### 合約開發與測試
 ```bash
 cd contracts
-forge build
-forge test
+forge test -vv
 ```
 
-### 前端開發
+### 前端啟動
 ```bash
 cd frontend
-npm install
 npm run dev
 ```
+
