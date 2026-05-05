@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+lib/
+
+# Foundry
+out/
+cache/
+broadcast/
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
