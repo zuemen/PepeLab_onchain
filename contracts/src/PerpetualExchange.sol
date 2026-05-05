@@ -131,9 +131,21 @@ contract PerpetualExchange is Ownable, ReentrancyGuard {
     }
 
     function closePosition(uint256 positionId) external nonReentrant {
+        _closePosition(msg.sender, positionId);
+    }
+
+    function closePositionFor(address user, uint256 positionId) external onlyCopyTracker nonReentrant {
+        _closePosition(user, positionId);
+    }
+
+    function _closePosition(address caller, uint256 positionId) internal {
         Position storage pos = positions[positionId];
         require(pos.isOpen, "Position already closed");
-        require(msg.sender == pos.owner, "Not position owner");
+        // If caller is copyTracker, they can close anyone's position (authorized by CopyTracker logic)
+        // If caller is not copyTracker, they must be the owner.
+        if (msg.sender != copyTracker) {
+            require(caller == pos.owner, "Not position owner");
+        }
 
         (uint256 currentPrice, ) = oracle.getPrice(pos.asset);
         require(!oracle.isStale(pos.asset), "Price is stale");
