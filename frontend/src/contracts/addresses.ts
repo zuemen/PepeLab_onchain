@@ -1,7 +1,16 @@
-export const CONTRACT_ADDRESSES = {
-  "MockUSDC": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
-  "MockOracle": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
-  "PerpetualExchange": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
-  "StrategyRegistry": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
-  "CopyTracker": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6"
+export const CONTRACT_ADDRESSES: Record<number, any> = {
+  31337: {
+    "MockUSDC": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    "MockOracle": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+    "PerpetualExchange": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+    "StrategyRegistry": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+    "CopyTracker": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6"
+  },
+  11155111: {
+    "MockUSDC": "",
+    "MockOracle": "",
+    "PerpetualExchange": "",
+    "StrategyRegistry": "",
+    "CopyTracker": ""
+  }
 };

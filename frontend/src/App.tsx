@@ -6,6 +6,7 @@ import TraderDashboard from './pages/TraderDashboard';
 import MarketplacePage from './pages/MarketplacePage';
 import CopyPage from './pages/CopyPage';
 import PortfolioPage from './pages/PortfolioPage';
+import AdminOraclePage from './pages/AdminOraclePage';
 import { useWallet } from './hooks/useWallet';
 import { useContracts } from './hooks/useContracts';
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/marketplace" element={<MarketplacePage address={address} signer={signer} />} />
           <Route path="/copy/:traderAddress" element={<CopyPage address={address} signer={signer} />} />
           <Route path="/portfolio" element={<PortfolioPage address={address} signer={signer} />} />
+          <Route path="/admin/oracle" element={<AdminOraclePage address={address} signer={signer} />} />
         </Routes>
       </Layout>
     </Router>
